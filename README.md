@@ -75,6 +75,9 @@ The contract offers the following functionalities:
 
 5. `promptDescription()`: A function on the contract that returns the prompt used to generate the images for the NFTs.
 
+## Author
+[Saksham Kanwar](https://github.com/01saksham)
+
 ## License
 
 This project is licensed under the MIT License. You can make a copy of the project to use for your own purposes.

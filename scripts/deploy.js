@@ -2,19 +2,19 @@ const hre = require("hardhat");
 const fs = require('fs');
 
 async function main() {
-  // Get the contract factory for AbstractArt
+  // Step 1: Get the contract factory for AbstractArt
   const AbstractArt = await hre.ethers.getContractFactory("AbstractArt");
 
-  // Deploy the contract
+  // Step 2: Deploy the contract
   const nft = await AbstractArt.deploy();
 
-  // Wait for the contract to be deployed
+  // Step 3: Wait for the contract to be deployed
   await nft.deployed();
 
-  // Log the contract address
-  console.log("AbstractArt contract deployed to:", nft.address);
+  // Step 4: Log the contract address after deployment
+  console.log("AbstractArt contract has been deployed at address:", nft.address);
 
-  // export the addresses
+  // Step 5: Export the contract address to a file for future reference
   fs.writeFileSync('metadata/contractAddress.js', `
     export const nftAddress = "${nft.address}"
   `);
@@ -24,6 +24,6 @@ async function main() {
 main()
   .then(() => process.exit(0))
   .catch((error) => {
-    console.error(error);
+    console.error("Error deploying the AbstractArt contract:", error);
     process.exit(1);
 });

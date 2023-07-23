@@ -29,7 +29,7 @@ npm install
 
 ## Deployment
 
-Before deploying the ERC721 contract, make sure to provide your wallet private key where required, i.e., `PRIVATE_KEY= 'your wallet private key'`. To deploy the ERC721 contract named "AbstractArt" to the Goerli Ethereum Testnet, run the following command:
+Before deploying the ERC721 contract, provide your wallet private key where required, i.e., `PRIVATE_KEY= 'your wallet private key'`. To deploy the ERC721 contract named "AbstractArt" to the Goerli Ethereum Testnet, run the following command:
 
 ```bash
 npx hardhat run scripts/deploy.js --network goerli

@@ -7,15 +7,15 @@ module.exports = {
   networks: {
     mumbai: {
       url: "https://rpc-mumbai.maticvigil.com",
-      accounts: ['70fa2cc00eecbf8d40e173aa1997ed81f1decffd3d8f8621cfce5dfb0aacf964'],
+      accounts: [process.env.PRIVATE_KEY],
     },
     goerli: {
       url: "https://ethereum-goerli.publicnode.com",
-      accounts: ['70fa2cc00eecbf8d40e173aa1997ed81f1decffd3d8f8621cfce5dfb0aacf964'],
+      accounts: [process.env.PRIVATE_KEY],
     },
     sepolia: {
       url: "https://eth-sepolia.g.alchemy.com/v2/demo",
-      accounts: ['70fa2cc00eecbf8d40e173aa1997ed81f1decffd3d8f8621cfce5dfb0aacf964'],
+     accounts: [process.env.PRIVATE_KEY],
        },
   },
 };

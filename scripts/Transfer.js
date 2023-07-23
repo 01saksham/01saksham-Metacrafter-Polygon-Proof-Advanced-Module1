@@ -2,12 +2,16 @@ const hardhat = require("hardhat");
 const { FXRootContractAbi } = require("../abis");
 
 async function main() {
+  // Replace with the contract address of your AbstractArt NFT
   const nftAddress = "0x973bce79732fc1A61bA27a8117664C6d7398c1CF";
-  const accountAddress = "0xb12F4664A25AF8b5eCe76dACCB74d2379383CB74" ;
+  
+  // Replace with the address where you want to deposit the NFTs
+  const accountAddress = "0xb12F4664A25AF8b5eCe76dACCB74d2379383CB74";
 
+  // Replace with the token IDs you want to deposit
   const tokenIds = [1, 2, 3, 4, 5];
 
-  // Get the contract instances
+  // Step 1: Get the contract instances
   const nftCollection = await hardhat.ethers.getContractAt("AbstractArt", nftAddress);
   const fxRoot = await hardhat.ethers.getContractAt(
     FXRootContractAbi,
@@ -17,12 +21,12 @@ async function main() {
   for (let i = 0; i < tokenIds.length; i++) {
     const tokenId = tokenIds[i];
 
-    // Approve the transfer of the token to fxRoot contract
+    // Step 2: Approve the transfer of the token to fxRoot contract
     const approveTxn = await nftCollection.approve(fxRoot.address, tokenId, { gasLimit: 300000 });
     await approveTxn.wait();
-    console.log(`NFT ${tokenId} approved`);
+    console.log(`👍 NFT ${tokenId} approved`);
 
-    // Deposit the token into fxRoot contract
+    // Step 3: Deposit the token into fxRoot contract
     const depositTxn = await fxRoot.deposit(
       nftAddress,
       accountAddress,
@@ -31,11 +35,11 @@ async function main() {
       { gasLimit: 300000 }
     );
     await depositTxn.wait();
-    console.log(`NFT ${tokenId} deposited`);
+    console.log(`✅ NFT ${tokenId} deposited`);
   }
 }
 
 main().catch((error) => {
-  console.error(`Error: ${error}`);
+  console.error(`❌ Error: ${error}`);
   process.exitCode = 1;
 });
